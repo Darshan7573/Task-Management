@@ -1,14 +1,26 @@
 import { useState } from "react"
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { loginUser } from '../api/mockApi'
 
 const Login = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const handleLogin = () => {
+        if (!email || !password) {
+            alert('Please fill in both email and password')
+            return
+        }
 
+        const res = loginUser(email, password)
+        if (res.success) {
+            localStorage.setItem('user', JSON.stringify(res.user))
+            navigate('/tasks')
+        } else {
+            alert(res.message)
+        }
     }
 
     return (
