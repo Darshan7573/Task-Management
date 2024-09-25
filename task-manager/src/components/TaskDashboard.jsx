@@ -1,6 +1,10 @@
+import TaskDashboardPage from "../pages/taskDashboard"
+
 const TaskDashboard = () => {
     return (
-        <div>TaskDashboard</div>
+        <div>
+            <TaskDashboardPage />
+        </div>
     )
 }
 
