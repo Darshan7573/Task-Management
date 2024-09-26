@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../context/TaskContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const TaskDashboardPage = () => {
 
@@ -13,7 +15,7 @@ const TaskDashboardPage = () => {
 
     const handleAddTask = () => {
         if (!title || !description) {
-            alert("Please provide all the details");
+            toast.error("Please provide all the details");
             return;
         }
 
@@ -34,13 +36,14 @@ const TaskDashboardPage = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('user')
-        navigate('/login')
+        toast.success('Logged Out Successfully')
+        navigate('/')
     }
 
     return (
         <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 to-indigo-100 p-4">
             <div className="border-2 border-gray-300 shadow-lg rounded-lg flex flex-col justify-center items-center p-10 bg-white w-full max-w-lg">
-                <p className="font-bold mb-5">Welcome {email}</p>
+                <p className="font-bold mb-5">Welcome, {email}</p>
                 <h2 className="text-3xl font-extrabold text-indigo-600 mb-6">Task Dashboard</h2>
 
                 <input

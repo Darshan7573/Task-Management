@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Register from './components/Register'
 import TaskDashboard from './components/TaskDashboard'
 import { TaskProvider } from './context/TaskContext'
+import { ToastContainer } from 'react-toastify'
 
 const App = () => {
 
@@ -21,7 +22,9 @@ const App = () => {
           </TaskProvider>
         } />
       </Routes>
+      <ToastContainer />
     </BrowserRouter>
+
   )
 }
 

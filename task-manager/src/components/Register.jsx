@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { registerUser } from "../api/mockApi";
 import { useNavigate } from "react-router-dom";
+import { FaTasks } from "react-icons/fa";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -11,27 +15,31 @@ const SignUp = () => {
 
     const handleRegister = () => {
         if (!email || !password || !confirmPassword) {
-            alert("Please fill in all fields");
+            toast.error("Please fill in all fields");
             return;
         }
 
         if (password !== confirmPassword) {
-            alert("Passwords do not match");
+            toast.error("Passwords do not match");
             return;
         }
 
         const res = registerUser({ email, password });
         if (res.success) {
-            alert(res.message);
+            toast.success('Account Created Successfully, Please Login')
             navigate("/login");
         } else {
-            alert(res.message);
+            toast.error(res.message);
         }
     };
 
     return (
         <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-br from-green-100 to-blue-100">
             <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+                <div className="flex flex-row justify-center items-center gap-2 mb-2">
+                    <FaTasks className="text-green-300 text-2xl" />
+                    <h1 className="font-bold text-2xl">Task Management</h1>
+                </div>
                 <h2 className="text-3xl font-bold text-center text-green-600 mb-6">Create Account</h2>
 
                 <input
@@ -63,6 +71,9 @@ const SignUp = () => {
                     Register
                 </button>
             </div>
+            <button onClick={() => navigate('/')} className="absolute top-4 py-3 left-4 bg-green-300 px-4 rounded-md hover:bg-green-500 text-black font-bold">
+                Home
+            </button>
         </div>
     );
 };

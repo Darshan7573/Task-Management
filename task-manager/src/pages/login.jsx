@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/mockApi";
 import { FaTasks } from "react-icons/fa";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -10,16 +12,17 @@ const Login = () => {
 
     const handleLogin = () => {
         if (!email || !password) {
-            alert("Please fill in both email and password");
+            toast.error("Please fill in both email and password");
             return;
         }
 
         const res = loginUser(email, password);
         if (res.success) {
             localStorage.setItem("user", JSON.stringify(res.user));
+            toast.success('Logged in Successfull')
             navigate("/tasks");
         } else {
-            alert(res.message);
+            toast.error(res.message);
         }
     };
 
