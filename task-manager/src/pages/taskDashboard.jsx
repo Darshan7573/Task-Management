@@ -1,7 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../context/TaskContext";
+import { useNavigate } from "react-router-dom";
 
 const TaskDashboardPage = () => {
+
+    const navigate = useNavigate()
+
+    const [email, setEmail] = useState()
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const { tasks, addTaskToUser, deleteTaskFromUser, toggleTaskCompletionForUser } = useContext(TaskContext);
@@ -17,9 +22,25 @@ const TaskDashboardPage = () => {
         setDescription("");
     };
 
+    useEffect(() => {
+        const storedEmail = localStorage.getItem('user')
+        if (storedEmail) {
+            const users = JSON.parse(storedEmail)
+            const email = users.email.trim()
+            const username = email.split('@')[0]
+            setEmail(username)
+        }
+    }, [])
+
+    const handleLogout = () => {
+        localStorage.removeItem('user')
+        navigate('/login')
+    }
+
     return (
         <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 to-indigo-100 p-4">
             <div className="border-2 border-gray-300 shadow-lg rounded-lg flex flex-col justify-center items-center p-10 bg-white w-full max-w-lg">
+                <p className="font-bold mb-5">Welcome {email}</p>
                 <h2 className="text-3xl font-extrabold text-indigo-600 mb-6">Task Dashboard</h2>
 
                 <input
@@ -43,7 +64,7 @@ const TaskDashboardPage = () => {
                 >
                     Add Task
                 </button>
-
+                <p>{!tasks || tasks.length === 0 ? <p className="mt-4 font-semibold text-gray-700">Add the task to appear here</p> : ""}</p>
                 <ul className="w-full mt-6 space-y-4">
                     {tasks.map((task) => (
                         <li
@@ -79,7 +100,13 @@ const TaskDashboardPage = () => {
                     ))}
                 </ul>
             </div>
-        </div>
+            <button onClick={() => navigate(-1)} className="absolute top-4 left-4 bg-green-300 text-white px-4 py-2 rounded-md hover:bg-green-500 transition duration-300">
+                Go Back
+            </button>
+            <button onClick={() => handleLogout()} className="absolute top-4 right-4 bg-red-400 text-black px-4 py-2 rounded-md hover:bg-red-500 transition duration-300">
+                Logout
+            </button>
+        </div >
     );
 };
 

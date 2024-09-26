@@ -1,12 +1,20 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { getTasks, addTask, deleteTask, toggleTaskCompletion } from "../api/mockApi";
 
 export const TaskContext = createContext()
 
 export const TaskProvider = ({ children, user }) => {
-    const [tasks, setTasks] = useState(getTasks(user.email))
+    const [tasks, setTasks] = useState([])
 
+
+    useEffect(() => {
+        const fetchTasks = async () => {
+            const fetchedTasks = await getTasks(user.email)
+            setTasks(fetchedTasks || [])
+        }
+        fetchTasks()
+    }, [user.email])
 
     const addTaskToUser = (title, description) => {
         const newTask = { id: Date.now(), title, description, completed: false }
