@@ -42,9 +42,9 @@ const TaskDashboardPage = () => {
 
     return (
         <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 to-indigo-100 p-4">
-            <div className="border-2 border-gray-300 shadow-lg rounded-lg flex flex-col justify-center items-center p-10 bg-white w-full max-w-lg">
+            <div className="border-2 border-gray-300 shadow-lg rounded-lg flex flex-col justify-center items-center p-6 md:p-10 bg-white w-full max-w-lg">
                 <p className="font-bold mb-5">Welcome, {email}</p>
-                <h2 className="text-3xl font-extrabold text-indigo-600 mb-6">Task Dashboard</h2>
+                <h2 className=" text-2xl md:text-3xl font-extrabold text-indigo-600 mb-6">Task Dashboard</h2>
 
                 <input
                     type="text"

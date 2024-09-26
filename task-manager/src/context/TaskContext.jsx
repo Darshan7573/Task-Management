@@ -5,8 +5,20 @@ import { getTasks, addTask, deleteTask, toggleTaskCompletion } from "../api/mock
 export const TaskContext = createContext()
 
 export const TaskProvider = ({ children, user }) => {
+    const [userEmail, setUserEmail] = useState(null)
     const [tasks, setTasks] = useState([])
 
+    useEffect(() => {
+        const storedEmail = localStorage.getItem('user');
+        if (storedEmail) {
+            const users = JSON.parse(storedEmail);
+            if (users && users.email) { // Check if users and users.email are not null
+                setUserEmail(users.email.trim());
+            } else {
+                console.warn('User email not found in local storage.');
+            }
+        }
+    }, [])
 
     useEffect(() => {
         const fetchTasks = async () => {

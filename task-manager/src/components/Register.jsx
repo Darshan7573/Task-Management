@@ -34,33 +34,33 @@ const SignUp = () => {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-br from-green-100 to-blue-100">
-            <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+        <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-br from-green-100 to-blue-100 p-4">
+            <div className="w-full max-w-sm md:max-w-md p-8 bg-white rounded-lg shadow-lg">
                 <div className="flex flex-row justify-center items-center gap-2 mb-2">
-                    <FaTasks className="text-green-300 text-2xl" />
-                    <h1 className="font-bold text-2xl">Task Management</h1>
+                    <FaTasks className="text-green-300 text-3xl md:text-2xl" />
+                    <h1 className="font-bold md:text-xl text-2xl">Task Management</h1>
                 </div>
-                <h2 className="text-3xl font-bold text-center text-green-600 mb-6">Create Account</h2>
+                <h2 className=" text-2xl md:text-3xl font-bold text-center text-green-600 mb-6">Create Account</h2>
 
                 <input
                     type="email"
                     placeholder="Enter Email"
                     value={email}
-                    className="w-full px-5 py-3 mb-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300"
+                    className="w-full px-4 py-3 mb-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300"
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
                     type="password"
                     placeholder="Password"
                     value={password}
-                    className="w-full px-5 py-3 mb-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300"
+                    className="w-full px-4 py-3 mb-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300"
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <input
                     type="password"
                     placeholder="Confirm Password"
                     value={confirmPassword}
-                    className="w-full px-5 py-3 mb-6 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300"
+                    className="w-full px-4 py-3 mb-6 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300"
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
 

@@ -6,13 +6,13 @@ const Home = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-100 via-green-400 to-green-300">
-            <div className="flex bg-white shadow-2xl rounded-3xl max-w-5xl w-[700px] h-[500px] overflow-hidden">
-                <div className="w-full flex flex-col justify-center items-center p-8 md:p-12 space-y-6 bg-gray-50">
+            <div className="flex bg-white shadow-2xl rounded-3xl max-w-5xl md:w-[700px] h-[500px] md:h-[500px overflow-hidden">
+                <div className="w-full flex flex-col justify-center items-center p-6 md:p-12 space-y-6 bg-gray-50">
                     <div className="flex items-center space-x-2">
-                        <FaTasks className="w-10 h-10 text-green-500 mb-16" />
-                        <h1 className="text-4xl font-bold text-gray-800 mb-16">Task Management</h1>
+                        <FaTasks className="w-10 h-10 text-green-500 mb-10 md:mb-16" />
+                        <h1 className="text-4xl font-bold text-gray-800 mb-10 md:mb-16">Task Management</h1>
                     </div>
-                    <p className="text-gray-600 text-center font-bold text-lg px-4">
+                    <p className="text-gray-600 text-center font-bold text-sm px-2 md:text-lg md:px-4">
                         Welcome! Please login or register to start managing your tasks efficiently.
                     </p>
                     <div className="flex flex-col justify-center items-center space-y-4 w-full mt-auto">
