@@ -77,12 +77,12 @@ const TaskDashboardPage = () => {
                         >
                             <div>
                                 <h3
-                                    className={`text-xl font-semibold ${task.completed ? "line-through text-gray-500" : "text-gray-900"
+                                    className={`text-xl font-bold ${task.completed ? "line-through text-red-500" : "text-gray-900"
                                         }`}
                                 >
                                     {task.title}
                                 </h3>
-                                <p className={task.completed ? "line-through text-gray-400" : "text-gray-700"}>{task.description}</p>
+                                <p className={task.completed ? "line-through text-red-700" : "text-gray-700"}>{task.description}</p>
                             </div>
 
                             <div className="flex items-center space-x-3">
